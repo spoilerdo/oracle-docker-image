@@ -1,4 +1,9 @@
 # How to deploy an Oracle database to Docker Desktop
+## Step 0: Add a .rpm folder
+You need to have a version of the Oracle Linux .rpm file that will be used to make the docker image.
+Some older versions cannot be downloaded from the official site but can be downloaded from the following links:
+After downloading and extracting put them in the corresponding version folder under a dockerfiles folder.
+- [11.2.0.2](https://drive.google.com/file/d/1ttGZ3xW4iHlsNR6ubWqqgFxFk9xSWzxx/view?usp=sharing)
 ## Step 1: Make an Docker image
 To make an Docker image, you need to use the buildContainerImage.sh bash script.
 With the following command:
@@ -26,3 +31,6 @@ GRANT ALL PRIVILEGES TO CRCD_DB;
 GRANT SELECT ON v_$session TO CRCD_DB;
 ```
 You can run the script with your favorite SQL editor and change CRCD_DB to whatever you want.
+
+### Disclaimer
+This repo has been forked and modified from https://github.com/oracle/docker-images
