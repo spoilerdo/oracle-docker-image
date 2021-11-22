@@ -15,7 +15,22 @@ This will create an local image, which you can push to docker hub for easy acces
 ## Step 2: Running the docker compose file
 In the Docker compose file you can specify a password. The image will take several minutes to fully deploy and start. It is important to have a shm_size of at least 1G. Otherwise the image will fail to deploy.
 
-## Step 3: Create a new table and user
+## Step 3: Connect locally to the database
+To connect locally with your favorite database manager you can use the following credentials:
+- Host: 127.0.0.1
+- Port: 1521
+- Database: XE (SID)
+- Username: system
+- Password: the one you chose
+- Client: XE
+
+To connect with it using an application you need a connection string with the following template:
+```Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=...)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=XE)));User Id=...;Password=...;```.
+You can find the host to look into the following file inside the docker image:
+```cat ./u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora```
+But for Docker desktop it usually is **localhost**
+
+## Step 4: Create a new table and user
 Use the following SQL to add a new table and user for a clean workspace in the database:
 ```
 CREATE USER CRCD_DB IDENTIFIED BY CRCD_DB;
