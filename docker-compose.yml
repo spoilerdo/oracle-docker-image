@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  db:
+    image: whyellowmd/oracle-xe-11g:11.2.0.3
+    ports:
+      - 1521:1521
+      - 8080:8080
+    shm_size: 1g
+    environment:
+      - ORACLE_PWD=root
